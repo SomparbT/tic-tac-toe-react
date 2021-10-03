@@ -72,7 +72,12 @@ const Game = () => {
       : "Go to game start";
     return (
       <li key={move}>
-        <button onClick={() => jumpTo(move)}>{desc}</button>
+        <button
+          className={move === stepNumber ? "bold-button" : ""}
+          onClick={() => jumpTo(move)}
+        >
+          {desc}
+        </button>
       </li>
     );
   });
