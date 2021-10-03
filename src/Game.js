@@ -6,6 +6,8 @@ const Game = () => {
   const [history, setHistory] = useState([
     {
       squares: Array(9).fill(null),
+      playedRow: -1,
+      playedCol: -1,
     },
   ]);
   const [stepNumber, setStepNumber] = useState(0);
@@ -19,7 +21,15 @@ const Game = () => {
       return;
     }
     squares[i] = xIsNext ? "X" : "O";
-    setHistory(currentHistory.concat([{ squares: squares }]));
+    setHistory(
+      currentHistory.concat([
+        {
+          squares: squares,
+          playedRow: Math.floor(i / 3) + 1,
+          playedCol: Math.floor(i % 3) + 1,
+        },
+      ])
+    );
     setStepNumber(currentHistory.length);
     setXIsNext((prev) => !prev);
   };
@@ -57,7 +67,9 @@ const Game = () => {
   const winner = calculateWinner(current.squares);
 
   const moves = history.map((step, move) => {
-    const desc = move ? "Go to move #" + move : "Go to game start";
+    const desc = move
+      ? `Go to move #${move}, played row #${step.playedRow}, column#${step.playedCol}`
+      : "Go to game start";
     return (
       <li key={move}>
         <button onClick={() => jumpTo(move)}>{desc}</button>
