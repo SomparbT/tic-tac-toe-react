@@ -17,7 +17,7 @@ body {
     margin-bottom: 10px;
   }
   
-  .square {
+  .x-value {
     background: #fff;
     border: 1px solid #999;
     float: left;
@@ -30,13 +30,32 @@ body {
     padding: 0;
     text-align: center;
     width: 100px;
+    color: rgb(24, 197, 240);
+    border: 1px solid #bdb2ff !important;
+  }
+
+  .O-value {
+    background: #fff;
+    border: 1px solid #999;
+    float: left;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 34px;
+    height: 100px;
+    margin-right: -1px;
+    margin-top: -1px;
+    padding: 0;
+    text-align: center;
+    width: 100px;
+    color: rgb(240, 24, 193);
+    border: 1px solid #bdb2ff !important ;
   }
   
-  .square:focus {
+  .x-value:focus {
     outline: none;
   }
   
-  .kbd-navigation .square:focus {
+  .kbd-navigation .x-value:focus {
     background: #ddd;
   }
   
@@ -69,10 +88,10 @@ body {
     background: rgb(255, 255, 255);
   }
 
-  button.square {
+  /* button.x-value {
     color: rgb(24, 197, 240);
     border: 1px solid #bdb2ff !important;
-  }
+  } */
 
 ::marker {
   color: #b185db;
