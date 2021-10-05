@@ -95,7 +95,7 @@ const Game = () => {
         <Board squares={current.squares} onClick={(i) => handleClick(i)} />
       </div>
       <div className="game-info">
-        <div>{status}</div>
+        <div className={winner ? "winner" : "player-status"}>{status}</div>
         <ol>{moves}</ol>
       </div>
     </div>
