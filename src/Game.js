@@ -12,6 +12,7 @@ const Game = () => {
   ]);
   const [stepNumber, setStepNumber] = useState(0);
   const [xIsNext, setXIsNext] = useState(true);
+  const [ascendingSort, setAscendingSort] = useState(true);
 
   const handleClick = (i) => {
     const currentHistory = history.slice(0, stepNumber + 1);
@@ -63,6 +64,10 @@ const Game = () => {
     setXIsNext(step % 2 === 0);
   };
 
+  const toggleSortHandler = () => {
+    setAscendingSort((prevState) => !prevState);
+  };
+
   const current = history[stepNumber];
   const winner = calculateWinner(current.squares);
 
@@ -82,6 +87,10 @@ const Game = () => {
     );
   });
 
+  if (!ascendingSort) {
+    moves.reverse();
+  }
+
   let status;
   if (winner) {
     status = "Winner: " + winner;
@@ -95,7 +104,8 @@ const Game = () => {
         <Board squares={current.squares} onClick={(i) => handleClick(i)} />
       </div>
       <div className="game-info">
-        <div>{status}</div>
+        <div className={winner ? "winner" : "player-status"}>{status}</div>
+        <button onClick={toggleSortHandler}>Ascending Sort</button>
         <ol>{moves}</ol>
       </div>
     </div>
