@@ -2,7 +2,18 @@ body {
   font: 14px "Century Gothic", Futura, sans-serif;
   margin: 20px;
 }
-
+.game-header {
+  color: rgb(131, 206, 206);
+  text-align: center;
+}
+.game-header span {
+  color: #ffadad;
+}
+.ASC-sort-btn {
+  border: solid 1px #d291bc;
+  background-color: #f6ecf5;
+  color: #957dad;
+}
 ol,
 ul {
   padding-left: 30px;

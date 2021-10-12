@@ -22,7 +22,14 @@ const Board = (props) => {
     return arrBoard;
   };
 
-  return <div>{renderBoard()}</div>;
+  return (
+    <div>
+      <h1 className="game-header">
+        TIC <span>TAC</span> TOE
+      </h1>
+      {renderBoard()}
+    </div>
+  );
 };
 
 export default Board;
