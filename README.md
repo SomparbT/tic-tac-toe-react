@@ -2,7 +2,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## How to start
 
-Firstly, you shuold clone this project via `git clone https://github.com/SomparbT/tic-tac-toe-react.git`. Then open clonned directory and run `npm i`. To start project use `npm start` and then you will be redirected to tic tac toe game. Enjoy the game :)
+Firstly, you should clone this project via `git clone https://github.com/SomparbT/tic-tac-toe-react.git`. Then open clone directory and run `npm i`. To start project use `npm start` and then you will be redirected to tic tac toe game. Enjoy the game! :D
 
 ## Available Scripts
 
