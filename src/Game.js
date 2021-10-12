@@ -105,7 +105,7 @@ const Game = () => {
       </div>
       <div className="game-info">
         <div className={winner ? "winner" : "player-status"}>{status}</div>
-        <button onClick={toggleSortHandler}>Ascending Sort</button>
+        <button className="ASC-sort-btn" onClick={toggleSortHandler}>Ascending Sort</button>
         <ol>{moves}</ol>
       </div>
     </div>
