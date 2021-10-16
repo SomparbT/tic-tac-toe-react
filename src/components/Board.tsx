@@ -1,11 +1,17 @@
 import Square from "./Square";
+import { XO } from "../Game";
 
-const Board = (props) => {
-  const renderSquare = (i) => (
+type PropsT = {
+  squares: XO[];
+  onClick: (i: number) => void;
+};
+
+const Board = (props: PropsT) => {
+  const renderSquare = (i: number) => (
     <Square key={i} value={props.squares[i]} onClick={() => props.onClick(i)} />
   );
 
-  // Rewrite Board to use two loops to make the squares instead of hardcoding them.
+  // Rewrite Board to use two loops to make the squares instead of hard-coding them.
   const renderBoard = () => {
     const arrBoard = [];
     for (let i = 0; i < 9; i += 3) {
