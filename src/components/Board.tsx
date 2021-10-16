@@ -4,11 +4,17 @@ import { XO } from "../Game";
 type PropsT = {
   squares: XO[];
   onClick: (i: number) => void;
+  winnerBoard: boolean[];
 };
 
 const Board = (props: PropsT) => {
   const renderSquare = (i: number) => (
-    <Square key={i} value={props.squares[i]} onClick={() => props.onClick(i)} />
+    <Square
+      key={i}
+      value={props.squares[i]}
+      onClick={() => props.onClick(i)}
+      isWinner={props.winnerBoard[i]}
+    />
   );
 
   // Rewrite Board to use two loops to make the squares instead of hard-coding them.

@@ -27,13 +27,19 @@ const calculateWinner = (squares: XO[]) => {
     [0, 4, 8],
     [2, 4, 6],
   ];
+
+  let winnerBoard: boolean[] = Array(9).fill(false);
+
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
-      return squares[a];
+      winnerBoard[a] = true;
+      winnerBoard[b] = true;
+      winnerBoard[c] = true;
+      return { winner: squares[a], winnerBoard: winnerBoard };
     }
   }
-  return null;
+  return { winner: null, winnerBoard: winnerBoard };
 };
 
 const Game: React.FC = () => {
@@ -46,7 +52,8 @@ const Game: React.FC = () => {
     const currentHistory = history.slice(0, stepNumber + 1);
     const current = currentHistory[currentHistory.length - 1];
     const squares = current.squares.slice();
-    if (calculateWinner(squares) || squares[i]) {
+    const winnerResult = calculateWinner(squares);
+    if (winnerResult.winner || squares[i]) {
       return;
     }
     squares[i] = xIsNext ? "X" : "O";
@@ -80,7 +87,8 @@ const Game: React.FC = () => {
   };
 
   const current = history[stepNumber];
-  const winner = calculateWinner(current.squares);
+  const winnerResult = calculateWinner(current.squares);
+  const winner = winnerResult.winner;
 
   const moves = history.map((step: HistoryT, move: number) => {
     const desc = move
@@ -117,6 +125,7 @@ const Game: React.FC = () => {
         <Board
           squares={current.squares}
           onClick={(i: number) => handleClick(i)}
+          winnerBoard={winnerResult.winnerBoard}
         />
         <button className="reset-btn" onClick={reset}>
           Reset
