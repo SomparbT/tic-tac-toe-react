@@ -18,6 +18,13 @@ body {
   color: #957dad;
 }
 
+.reset-btn {
+  border: solid 1px #d291bc;
+  background-color: #f6ecf5;
+  color: #957dad;
+  width: 100px;
+}
+
 ol, ul {
   padding-left: 30px;
 }
