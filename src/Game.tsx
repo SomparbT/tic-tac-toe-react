@@ -10,6 +10,12 @@ type HistoryT = {
   playedCol: number;
 };
 
+const initialHistory = {
+  squares: Array(9).fill(null),
+  playedRow: -1,
+  playedCol: -1,
+};
+
 const calculateWinner = (squares: XO[]) => {
   const lines = [
     [0, 1, 2],
@@ -31,13 +37,7 @@ const calculateWinner = (squares: XO[]) => {
 };
 
 const Game: React.FC = () => {
-  const [history, setHistory] = useState<HistoryT[]>([
-    {
-      squares: Array(9).fill(null),
-      playedRow: -1,
-      playedCol: -1,
-    },
-  ]);
+  const [history, setHistory] = useState<HistoryT[]>([initialHistory]);
   const [stepNumber, setStepNumber] = useState(0);
   const [xIsNext, setXIsNext] = useState(true);
   const [ascendingSort, setAscendingSort] = useState(true);
@@ -70,6 +70,13 @@ const Game: React.FC = () => {
 
   const toggleSortHandler = () => {
     setAscendingSort((prevState) => !prevState);
+  };
+
+  const reset = () => {
+    setHistory([initialHistory]);
+    setStepNumber(0);
+    setXIsNext(true);
+    setAscendingSort(true);
   };
 
   const current = history[stepNumber];
@@ -109,7 +116,11 @@ const Game: React.FC = () => {
           squares={current.squares}
           onClick={(i: number) => handleClick(i)}
         />
+        <button className="reset-btn" onClick={reset}>
+          Reset
+        </button>
       </div>
+
       <div className="game-info">
         <div className={winner ? "winner" : "player-status"}>{status}</div>
         <button className="ASC-sort-btn" onClick={toggleSortHandler}>
