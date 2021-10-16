@@ -105,6 +105,8 @@ const Game: React.FC = () => {
   let status: string;
   if (winner) {
     status = "Winner: " + winner;
+  } else if (stepNumber === 9) {
+    status = "It's a draw!";
   } else {
     status = "Next player: " + (xIsNext ? "X" : "O");
   }
