@@ -2,7 +2,8 @@ import React, { useState } from "react";
 
 import Board from "./components/Board";
 
-type XO = "X" | "O";
+export type XO = "X" | "O";
+
 type HistoryT = {
   squares: XO[];
   playedRow: number;
