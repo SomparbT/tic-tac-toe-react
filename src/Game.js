@@ -2,13 +2,16 @@ import { useState } from "react";
 
 import Board from "./components/Board";
 
+const initialHistory = 
+{
+    squares: Array(9).fill(null),
+    playedRow: -1,
+    playedCol: -1
+};
+
 const Game = () => {
   const [history, setHistory] = useState([
-    {
-      squares: Array(9).fill(null),
-      playedRow: -1,
-      playedCol: -1,
-    },
+    initialHistory
   ]);
   const [stepNumber, setStepNumber] = useState(0);
   const [xIsNext, setXIsNext] = useState(true);
@@ -68,6 +71,13 @@ const Game = () => {
     setAscendingSort((prevState) => !prevState);
   };
 
+  const reset = () => {
+    setHistory([initialHistory]);
+    setStepNumber(0);
+    setXIsNext(true);
+    setAscendingSort(true);
+  };
+
   const current = history[stepNumber];
   const winner = calculateWinner(current.squares);
 
@@ -102,7 +112,9 @@ const Game = () => {
     <div className="game">
       <div className="game-board">
         <Board squares={current.squares} onClick={(i) => handleClick(i)} />
+        <button className="reset-btn" onClick={reset}>Reset</button>
       </div>
+
       <div className="game-info">
         <div className={winner ? "winner" : "player-status"}>{status}</div>
         <button className="ASC-sort-btn" onClick={toggleSortHandler}>Ascending Sort</button>
