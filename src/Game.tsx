@@ -17,6 +17,7 @@ const initialHistory = {
 };
 
 const calculateWinner = (squares: XO[]) => {
+  const winnerBoard: boolean[] = Array(9).fill(false);
   const lines = [
     [0, 1, 2],
     [3, 4, 5],
@@ -27,19 +28,18 @@ const calculateWinner = (squares: XO[]) => {
     [0, 4, 8],
     [2, 4, 6],
   ];
-
-  let winnerBoard: boolean[] = Array(9).fill(false);
-
+  let winner = null;
   for (let i = 0; i < lines.length; i++) {
     const [a, b, c] = lines[i];
     if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
       winnerBoard[a] = true;
       winnerBoard[b] = true;
       winnerBoard[c] = true;
-      return { winner: squares[a], winnerBoard: winnerBoard };
+      winner = squares[a]
     }
   }
-  return { winner: null, winnerBoard: winnerBoard };
+
+  return { winner, winnerBoard };
 };
 
 const Game: React.FC = () => {
