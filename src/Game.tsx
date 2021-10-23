@@ -8,6 +8,7 @@ type HistoryT = {
   squares: XO[];
   playedRow: number;
   playedCol: number;
+  // test
 };
 
 const initialHistory = {
