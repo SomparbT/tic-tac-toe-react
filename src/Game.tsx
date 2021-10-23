@@ -36,7 +36,7 @@ const calculateWinner = (squares: XO[]) => {
       winnerBoard[a] = true;
       winnerBoard[b] = true;
       winnerBoard[c] = true;
-      winner = squares[a]
+      winner = squares[a];
     }
   }
 
@@ -134,7 +134,11 @@ const Game: React.FC = () => {
       </div>
 
       <div className="game-info">
-        <div className={winner ? "winner" : "player-status"}>{status}</div>
+        <div
+          className={winner || stepNumber === 9 ? "winner" : "player-status"}
+        >
+          {status}
+        </div>
         <button className="ASC-sort-btn" onClick={toggleSortHandler}>
           Ascending Sort
         </button>
